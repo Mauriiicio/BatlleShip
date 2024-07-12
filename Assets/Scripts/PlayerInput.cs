@@ -41,6 +41,10 @@ public class PlayerInput : MonoBehaviour
     }
     private void Update()
     {
+        if(Input.GetButton("Select")){
+            Debug.Log("Fecha jogo");
+            Application.Quit();
+        }
         if (!isGameOver)
             Shooting();
         ChangeRenderer();
@@ -70,14 +74,14 @@ public class PlayerInput : MonoBehaviour
     }
     public void Shooting()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > nextFireCannon)
+        if (Input.GetButton("Fire2") && Time.time > nextFireCannon)
         {
             nextFireCannon = Time.time + fireRateCannon;
             GameObject cannonBallInstance = Instantiate(cannonBall, cannonLoose.position, transform.rotation);
             cannonBallInstance.GetComponent<CannonBall>().Move(transform.up);
             GameObject newFireAnimation = Instantiate(fireAnimationPrefab, cannonLoose.position, Quaternion.identity);
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse1) && Time.time > nextFireCannonSide)
+        else if (Input.GetButton("Fire3") && Time.time > nextFireCannonSide)
         {
             nextFireCannonSide = Time.time + fireRateCannonSide;
             GameObject cannonBallSide0 = Instantiate(cannonBall, cannonLooseSide[0].position, transform.rotation);

@@ -23,6 +23,12 @@ public class MenuManager : MonoBehaviour
     {
         txt_tempoJogo.text = tempoSlider.value.ToString("F1");
         txt_tempoRespawn.text = sliderRespawn.value.ToString("F1");
+        if(Input.GetButton("Fire1")){
+            NextScene();
+        }else if(Input.GetButton("Select")){
+            Debug.Log("Fecha jogo");
+            Application.Quit();
+        }
     }
     public void NextScene()
     {

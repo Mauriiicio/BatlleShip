@@ -33,14 +33,14 @@ public class GameManager : MonoBehaviour
     {
         timeRemaining -= Time.deltaTime;
 
-        // Verifica se o tempo restante é menor ou igual a 0
+        
         if (timeRemaining <= 0)
         {
             GameOver();
             return;
         }
 
-        // Converte o tempo restante em minutos e segundos
+        
         int minutes = Mathf.FloorToInt(timeRemaining / 60);
         int seconds = Mathf.FloorToInt(timeRemaining % 60);
 
@@ -67,6 +67,12 @@ public class GameManager : MonoBehaviour
         player.isGameOver = true;
         gameOver = true;
         gameOverPanel.SetActive(true);
+        if(Input.GetButton("Select")){
+            Debug.Log("Fecha jogo");
+            SceneMenu();
+        }if(Input.GetButton("Fire1")){
+            ReestartGame();
+        }
     }
     
 }
